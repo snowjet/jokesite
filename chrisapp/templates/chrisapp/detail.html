@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+{% load static %}
+<html>
+    <head>
+        <meta content="text/html; charset=iso-8859-1" http-equiv="content-type"><title>Chris' Rockin' Joke App</title>
+        <meta content="text/html; charset=iso-8859-1" http-equiv="content-type">
+        <link rel="stylesheet" href="{% static 'css/chrisapp.css' %}">
+    </head>
+    <body>
+        <div id="mainBox">
+            <div id="siteHeader">
+                <h1>Chris' Top Jokes</h1>
+            </div>
+            <div>
+                <p>{{ joke.joke_text }}</p>
+                <ul>
+                {% for punchline in joke.punchline_set.all %}
+                    <h2>{{ punchline.punchline_text }}</h2>
+                {% endfor %}
+                </ul>
+            </div>
+            
+            <div id="siteFooter">
+                <p>I have a better joke...</p>
+            </div>
+        </div>
+        
+    </body>
+</html>

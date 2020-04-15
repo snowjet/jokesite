@@ -1,6 +1,6 @@
 # Create your views here.
 
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse
 from django.template import loader
 from .models import Joke
@@ -12,7 +12,10 @@ def index(request):
     return render(request, 'chrisapp/index.html', context)
    
 
-
+def detail(request, joke_id):
+    joke = get_object_or_404(Joke, pk=joke_id)
+    return render(request, 'chrisapp/detail.html', {'joke': joke})
+   
 
 #def index(request):
 #    return HttpResponse("""
