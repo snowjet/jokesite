@@ -14,11 +14,30 @@ body {
     box-shadow: 5px 10px 5px;
     border-radius: 25px;
 }
-#siteHeader {
-    padding-top: 1em;
-    padding-bottom: 1em;
-}
 
+#addForm {
+  padding-left: 1em;
+  padding-bottom: 1em;
+}
+#siteHeader {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+#siteFooter {
+    text-align: center;
+    font-size: 70%;
+    padding-bottom: 1em;
+    padding-top: 1em;
+}
+#detailPunchline {
+  text-align: center;
+  font-size: x-large;
+  color: #ff0000;
+}
+#detailJokeText {
+  text-align: center;
+  font-style: italic;
+}
 h1 {
 	color: #ff0000;
 	font-family: "Bradley Hand ITC";
@@ -27,10 +46,3 @@ h1 {
 	font-weight: bold;
 	text-align: center;
 }
-
-#siteFooter {
-    text-align: center;
-    font-size: 70%;
-    padding-bottom: 1em;
-    padding-top: 1em;
-  }

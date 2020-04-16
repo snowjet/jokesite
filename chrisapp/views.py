@@ -14,8 +14,11 @@ def index(request):
 
 def detail(request, joke_id):
     joke = get_object_or_404(Joke, pk=joke_id)
+    
     return render(request, 'chrisapp/detail.html', {'joke': joke})
    
+def add(request):
+    return render(request, 'chrisapp/add.html')
 
 #def index(request):
 #    return HttpResponse("""

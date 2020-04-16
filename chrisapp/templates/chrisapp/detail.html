@@ -2,7 +2,7 @@
 {% load static %}
 <html>
     <head>
-        <meta content="text/html; charset=iso-8859-1" http-equiv="content-type"><title>Chris' Rockin' Joke App</title>
+        <meta content="text/html; charset=iso-8859-1" http-equiv="content-type"><title>Joke App</title>
         <meta content="text/html; charset=iso-8859-1" http-equiv="content-type">
         <link rel="stylesheet" href="{% static 'css/chrisapp.css' %}">
     </head>
@@ -11,17 +11,18 @@
             <div id="siteHeader">
                 <h1>Chris' Top Jokes</h1>
             </div>
-            <div>
-                <p>{{ joke.joke_text }}</p>
-                <ul>
-                {% for punchline in joke.punchline_set.all %}
-                    <h2>{{ punchline.punchline_text }}</h2>
-                {% endfor %}
-                </ul>
+            <div id="detailJokeText">
+                <p>{{ joke.joke_text }}</p>   
+            </div>
+            <! todo: only need the first item >
+            <div id="detailPunchline">
+            {% for punchline in joke.punchline_set.all %}
+            <p>{{ punchline.punchline_text }}</p> 
+            {% endfor %}
             </div>
             
             <div id="siteFooter">
-                <p>I have a better joke...</p>
+                <p><a href="/chrisapp/add/">I have a better joke...</a></p>
             </div>
         </div>
         
