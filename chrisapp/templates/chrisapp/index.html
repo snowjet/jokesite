@@ -19,12 +19,12 @@
                     {% endfor %}
                     </ul>
                 {% else %}
-                    <p>No jokes are available.</p>
+                    <p>Sorry no jokes are available.</p>
                 {% endif %}
             </div>
             
             <div id="siteFooter">
-                <p><a href="/chrisapp/add/">I have a better joke...</a></p>
+                <p><a href="{% url 'add' %}">I have a better joke...</a></p>
             </div>
         </div>
         

@@ -14,14 +14,12 @@
             </div>
             <div id=addForm>
                 <p>OK what is your joke?</p>
-                <form action="post" id="joke_form" novalidate>
-                {% csrf_token %}
-                    <label for="joke_text">Your joke text or question:</label>
-                    <input type="text" name="joke_text" class="vTextField" maxlength="200" required_id="id_joke_text">
-                    <p><label for="joke_punchline">and the punchline?</label>
-                    <input type="text" name="joke_punchline" class="vTextField" maxlength="200" required_id="id_joke_punchline"></p>
-  
-                </form>    
+                <form action="{% url 'add' %}" method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                    <input type ="submit" value="OK">
+                </form>
+                
             </div>
          </div>
         

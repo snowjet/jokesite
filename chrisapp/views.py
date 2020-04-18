@@ -2,7 +2,11 @@
 
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.template import loader
+import logging
+import sys
+from .forms import JokeForm
 from .models import Joke
 
 
@@ -13,21 +17,31 @@ def index(request):
    
 
 def detail(request, joke_id):
-    joke = get_object_or_404(Joke, pk=joke_id)
-    
+    joke = get_object_or_404(Joke, pk=joke_id)  
     return render(request, 'chrisapp/detail.html', {'joke': joke})
-   
+     
 def add(request):
-    return render(request, 'chrisapp/add.html')
+    print('add called')
+    if request.method == 'POST':
+        
+        # create a form instance and populate it with data from the request:    
+        print('request method=POST')
 
-#def index(request):
-#    return HttpResponse("""
-#    
-#    <html>
-#    <head>
-#        <title>Chris' App</title>
-#        <link rel="stylesheet" href="{% static 'css/chrisapp.css' %}">
-#    </head>
-#    <body>
-#    <h1>Hello, world. You're at the fantastic chrisapp index.</h1>
-#""")
+        form = JokeForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            # 
+            form.save()
+            # redirect to main:
+            print('form is valid!')
+            return HttpResponseRedirect('/chrisapp/')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        print('else case')
+        form = JokeForm()
+
+    return render(request, 'chrisapp/add.html', {'form': form})
+
+

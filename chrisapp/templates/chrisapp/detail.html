@@ -14,15 +14,17 @@
             <div id="detailJokeText">
                 <p>{{ joke.joke_text }}</p>   
             </div>
-            <! todo: only need the first item >
             <div id="detailPunchline">
-            {% for punchline in joke.punchline_set.all %}
-            <p>{{ punchline.punchline_text }}</p> 
+            
+            <p>{{ joke.punchline_text }}</p> 
+            <! not working>
+            {% for likes in joke.likes_set.all %}
+            *
             {% endfor %}
             </div>
             
             <div id="siteFooter">
-                <p><a href="/chrisapp/add/">I have a better joke...</a></p>
+                <p><a href="{% url 'add' %}">I have a better joke...</a></p>
             </div>
         </div>
         
