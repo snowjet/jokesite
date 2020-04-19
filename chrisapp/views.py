@@ -41,6 +41,7 @@ def add(request):
     else:
         print('else case')
         form = JokeForm()
+   
 
     return render(request, 'chrisapp/add.html', {'form': form})
 
