@@ -50,6 +50,12 @@ h1 {
 	font-weight: bold;
 	text-align: center;
 }
+.formFields {
+  font-size: 100%;
+}
+.msg {
+  font-size: 70%;
+}
 .urlPretty {
   text-decoration: none;
   color: #006da3; 

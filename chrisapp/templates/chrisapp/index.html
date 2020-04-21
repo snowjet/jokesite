@@ -12,6 +12,13 @@
             <div id="siteHeader">
                 <h1>Chris' Top Jokes</h1>
             </div>
+            <div class="msg">
+            {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags %} {% endif %}> {{ message }}
+                {% endfor %}      
+            {% endif %}
+            </div>
             <div> 
                 {% if joke_list %}
                     <ul>

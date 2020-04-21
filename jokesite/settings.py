@@ -119,3 +119,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Email Server Config
+EMAIL_HOST = 'smtp.telstra.com'
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 587
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = 'chris-n@bigpond.com'
