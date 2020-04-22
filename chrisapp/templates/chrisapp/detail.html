@@ -10,7 +10,7 @@
     <body>
         <div id="mainBox">
             <div id="siteHeader">
-                <h1>Chris' Top Jokes</h1>
+                <h1 class="site">Chris' Top Jokes</h1>
             </div>
             <div id="detailJokeText">
                 <p>{{ joke.joke_text }}</p>   
@@ -22,7 +22,7 @@
             <div id="siteFooter">
                 <p><a href="{% url 'add' %}" class="btn btn-inline btn-small btn-primary"><span>I have a better joke</span></a>
                 <a href="{% url 'email'  joke_id=joke.id  %}" class="btn btn-inline btn-small btn-info"><span>Ha ha, email it to me</span></a>
-                <a href="/chrisapp/" class="btn btn-inline btn-small btn-info"><span>Rubbish</span></a></p>
+                <a href="{% url 'index' %}" class="btn btn-inline btn-small btn-info"><span>Rubbish</span></a></p>
             </div>
         </div>
         

@@ -125,4 +125,4 @@ EMAIL_HOST = 'smtp.telstra.com'
 EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 EMAIL_USE_TLS = False
-DEFAULT_FROM_EMAIL = ''
+DEFAULT_FROM_EMAIL = 'chris-n@bigpond.com'

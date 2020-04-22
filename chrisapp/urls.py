@@ -1,3 +1,4 @@
+# URL dispatcher mapps URLs to python functions in views.py
 from django.urls import path
 
 from . import views

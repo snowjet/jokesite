@@ -1,3 +1,4 @@
+# define the screen forms using both ModelForm, a form derived from a model, and a Form not tied to a DB Model
 from django import forms
 from django.forms import ModelForm, Textarea
 from .models import  Joke

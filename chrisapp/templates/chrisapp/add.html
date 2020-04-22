@@ -11,7 +11,7 @@
     <body>
         <div id="mainBox">
             <div id="siteHeader">
-                <h1>Chris' Top Jokes</h1>
+                <h1 class="site">Chris' Top Jokes</h1>
             </div>
             <div id=addForm>
                 <p>OK what is your joke?
@@ -20,7 +20,7 @@
                     {{ form }}
                     <div id=siteFooter></div>
                         <input type ="submit" value="Add my Joke" class="btn btn-inline btn-small btn-primary"> 
-                        <a href="/chrisapp/" class="btn btn-inline btn-small btn-info"><span>Cancel</span></a></p> 
+                        <a href="{% url 'index' %}" class="btn btn-inline btn-small btn-info"><span>Cancel</span></a></p> 
                 </div>
                 </form>                
             </div>

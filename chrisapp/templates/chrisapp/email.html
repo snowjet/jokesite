@@ -10,12 +10,12 @@
     <body>
         <div id="mainBox">
             <div id="siteHeader">
-                <h1>Chris' Top Jokes</h1>
+                <h1 class="site">Chris' Top Jokes</h1>
             </div>
             <div id=addForm>
                 <form action="{% url 'email' joke_id=joke.id %}" method="post" class="formFields">
                     {% csrf_token %}
-                    <input id="your_email" type="email" name="your_email" placeholder="youremail@your.domain" size=30>
+                    <input id="your_email" type="email" name="your_email" placeholder="youremail@your.domain" required size=30>
                     <div id=siteFooter></div>
                         <input type ="submit" value="Email me" class="btn btn-inline btn-small btn-primary"> 
                         <a href="{% url 'index' %}" class="btn btn-inline btn-small btn-info"><span>Cancel</span></a></p> 

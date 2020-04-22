@@ -1,4 +1,4 @@
-
+/* all site CSS, needs a clean up */
 body {
     width: 80%;
     font-family: Arial,Helvetica,sans-serif;
@@ -42,7 +42,7 @@ body {
   color: #0088cc;
 }
 
-h1 {
+h1.site {
 	color: #0088cc;
 	font-family: "Bradley Hand ITC";
 	font-size: 200%;
@@ -51,6 +51,9 @@ h1 {
 	text-align: center;
 }
 .formFields {
+  font-size: 100%;
+}
+input[type=email] {
   font-size: 100%;
 }
 .msg {

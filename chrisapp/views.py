@@ -1,4 +1,4 @@
-# Create your views here.
+# Each view processes a web request and returns web response (actually the controller in MVC pattern, View is the HTML templates)
 
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse
@@ -7,28 +7,29 @@ from django.template import loader
 from django.core.mail import EmailMultiAlternatives, send_mail
 from django.conf import settings
 from django.contrib import messages
+from django.urls import reverse
+
 import logging
 import sys
 from .forms import JokeForm, EmailForm
 from .models import Joke
 
-
+# Home page, list all jokes
 def index(request):
-    joke_list = Joke.objects.order_by('-joke_text')[:5]
+    joke_list = Joke.objects.order_by('-joke_text')[:50]
     context = {'joke_list': joke_list}
     return render(request, 'chrisapp/index.html', context)
    
-
+# Show Punchline 
 def detail(request, joke_id):
     joke = get_object_or_404(Joke, pk=joke_id)  
     return render(request, 'chrisapp/detail.html', {'joke': joke})
-     
+
+ # Add a new joke  
 def add(request):
     if request.method == 'POST':
         
         # create a form instance and populate it with data from the request:    
-        print('request method=POST')
-
         form = JokeForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
@@ -46,6 +47,7 @@ def add(request):
 
     return render(request, 'chrisapp/add.html', {'form': form})
 
+# Email a joke to the user
 def email(request, joke_id):
     joke = get_object_or_404(Joke, pk=joke_id)  
     if request.method == 'POST':
@@ -55,7 +57,7 @@ def email(request, joke_id):
         form = EmailForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
-            messages.success(request, 'Your joke email on the way!')
+            messages.success(request, 'Your joke email is on the way!')
             # process the data in form.cleaned_data as required
             # 
             host =  request.get_host()
@@ -74,7 +76,6 @@ def email(request, joke_id):
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        print('else case')
         form = EmailForm()
    
 

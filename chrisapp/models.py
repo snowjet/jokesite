@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+# Create your models (class representing a database table which can be also be a form on screen) here.
 
 
 class Joke(models.Model):

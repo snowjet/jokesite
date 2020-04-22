@@ -10,12 +10,12 @@
     <body>
         <div id="mainBox">
             <div id="siteHeader">
-                <h1>Chris' Top Jokes</h1>
+                <h1 class="site">Chris' Top Jokes</h1>
             </div>
             <div class="msg">
             {% if messages %}
                 {% for message in messages %}
-                    {% if message.tags %} {% endif %}> {{ message }}
+                    <p>{% if message.tags %} {% endif %}> {{ message }}</p>
                 {% endfor %}      
             {% endif %}
             </div>
@@ -24,7 +24,7 @@
                     <ul>
                     {% for joke in joke_list %}
                     
-                        <li><a href="/chrisapp/{{ joke.id }}/" class="urlPretty">{{ joke.joke_text }}</a>
+                        <li><a href="{% url 'detail'  joke_id=joke.id  %}" class="urlPretty">{{ joke.joke_text }}</a>
                             
                         </li>
                     {% endfor %}
