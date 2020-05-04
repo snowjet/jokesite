@@ -1,0 +1,42 @@
+/* Example printer friendly */
+body {
+    width: 80%;
+    background-color: #fff;
+  }
+  header, footer,  form  {
+    display: none;
+  }
+  #mainBox {
+    background: #fff ;
+    color: #3c3d3c;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 80%;
+    width: 80%;
+    padding-left: 1em;
+    border: 1px solid black;
+    box-shadow: none;
+    border-radius: 0px;
+}
+h1.site {
+	color: #000;
+	font-family: "Palatino";
+	font-size: 200%;
+	font-weight: bold;
+	text-align: center;
+}
+#detailJokeText {
+    font-family: "Palatino";
+    text-align: center;
+    font-size: x-large;
+    color: #000;
+  }
+  #detailPunchline {
+    font-family: "Palatino";
+    text-align: center;
+    font-size: x-large;
+    color: #000;
+  }
+  .btn {
+    display: none;
+  }
