@@ -88,7 +88,7 @@ DATABASES = {
         'NAME': 'jokedb',
         'USER': 'pguser',
         'PASSWORD': 'pgsecret',
-        'HOST': os.getenv('DATABASE_SERVICE_NAME'),
+        'HOST': os.getenv('POSTGRESQL_SERVICE_HOST'),
 #        'HOST': '',
 #        'PORT': '',
     },
