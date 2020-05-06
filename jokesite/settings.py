@@ -85,12 +85,11 @@ WSGI_APPLICATION = 'jokesite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'jokedb',
-        'USER': 'pguser',
-        'PASSWORD': 'pgsecret',
+        'NAME': os.getenv('POSTGRESQL_DATABASE'),
+        'USER': os.getenv('POSTGRESQL_USER'),
+        'PASSWORD': os.getenv('POSTGRESQL_PASSWORD'),
         'HOST': os.getenv('POSTGRESQL_SERVICE_HOST'),
-#        'HOST': '',
-#        'PORT': '',
+        'PORT': os.getenv('POSTGRESQL_SERVICE_PORT'),
     },
 }
 
