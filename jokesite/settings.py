@@ -88,6 +88,7 @@ DATABASES = {
         'NAME': 'jokedb',
         'USER': 'pguser',
         'PASSWORD': 'pgsecret',
+        'HOST': os.getenv('DATABASE_SERVICE_NAME'),
 #        'HOST': '',
 #        'PORT': '',
     },
