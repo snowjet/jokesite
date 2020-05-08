@@ -2,9 +2,12 @@ FROM registry.access.redhat.com/ubi8/python-36
 
 ENV PORT 8080
 EXPOSE 8080
-WORKDIR /usr/src/app
 
-ADD flask /usr/src/app/flask
+USER root
+COPY uplodad/src /tmp/src
+RUN chown -R 1001:0 /tmp/src
+USER 1001
+
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
