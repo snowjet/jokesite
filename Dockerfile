@@ -8,8 +8,7 @@ USER 1001
 WORKDIR /opt/app-root/src
 COPY requirements.txt ./
 RUN pip install --upgrade pip --no-cache-dir -r requirements.txt
-RUN mkdir /opt/app-root/src
-WORKDIR /opt/app-root/src
+
 ADD . ./
 
 ENV PORT 8080
