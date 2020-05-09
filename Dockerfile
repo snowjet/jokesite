@@ -3,11 +3,11 @@ LABEL description="Jokesite"
 MAINTAINER chris
 
 USER root
-RUN mkdir /opt/app-root && chown -R 1001:0 /opt/app-root
+RUN mkdir -p /opt/app-root/src && chown -R 1001:0 /opt/app-root/src
 USER 1001 
-WORKDIR /opt/app-root
+WORKDIR /opt/app-root/src
 COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --upgrade pip --no-cache-dir -r requirements.txt
 RUN mkdir /opt/app-root/src
 WORKDIR /opt/app-root/src
 ADD . ./
