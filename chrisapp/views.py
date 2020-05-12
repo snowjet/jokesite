@@ -82,4 +82,6 @@ def email(request, joke_id):
     return render(request, 'chrisapp/email.html', {'joke': joke})
 
 
-    
+def health(request):
+    return HttpResponseRedirect('/chrisapp/')
+

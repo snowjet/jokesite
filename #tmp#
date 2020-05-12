@@ -1,0 +1,133 @@
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+  selfLink: /apis/apps.openshift.io/v1/namespaces/joke/deploymentconfigs/postgresql
+  resourceVersion: '50378108'
+  name: postgresql
+  uid: 67d14e90-9356-11ea-b279-0a580a810037
+  creationTimestamp: '2020-05-11T07:09:50Z'
+  generation: 14
+  namespace: joke
+  labels:
+    app: postgresql
+    app.kubernetes.io/component: postgresql
+    app.kubernetes.io/instance: postgresql
+spec:
+  strategy:
+    type: Rolling
+    rollingParams:
+      updatePeriodSeconds: 1
+      intervalSeconds: 1
+      timeoutSeconds: 600
+      maxUnavailable: 25%
+      maxSurge: 25%
+    resources: {}
+    activeDeadlineSeconds: 21600
+  triggers:
+    - type: ConfigChange
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - postgresql
+        from:
+          kind: ImageStreamTag
+          namespace: openshift
+          name: 'postgresql:10'
+        lastTriggeredImage: >-
+          image-registry.openshift-image-registry.svc:5000/openshift/postgresql@sha256:de3ab628b403dc5eed986a7f392c34687bddafee7bdfccfd65cecf137ade3dfd
+  replicas: 0
+  revisionHistoryLimit: 10
+  test: false
+  selector:
+    deploymentconfig: postgresql
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        deploymentconfig: postgresql
+      annotations:
+        openshift.io/generated-by: OpenShiftNewApp
+    spec:
+      containers:
+        - name: postgresql
+          image: >-
+            image-registry.openshift-image-registry.svc:5000/openshift/postgresql@sha256:de3ab628b403dc5eed986a7f392c34687bddafee7bdfccfd65cecf137ade3dfd
+          ports:
+            - containerPort: 5432
+              protocol: TCP
+          env:
+            - name: JOKESITECM_YAML
+              valueFrom:
+                configMapKeyRef:
+                  name: jokesitecm
+                  key: jokesitecm.yaml
+            - name: DATABASE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: jokesitecm
+                  key: DATABASE_NAME
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: jokesitecm
+                  key: DATABASE_PASSWORD
+            - name: DATABASE_SERVICE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: jokesitecm
+                  key: DATABASE_SERVICE_NAME
+            - name: DATABASE_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: jokesitecm
+                  key: DATABASE_USER
+            - name: POSTGRESQL_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: jokesitecm
+                  key: POSTGRESQL_DATABASE
+            - name: POSTGRESQL_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: jokesitecm
+                  key: POSTGRESQL_PASSWORD
+            - name: POSTGRESQL_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: jokesitecm
+                  key: POSTGRESQL_USER
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+status:
+  latestVersion: 6
+  observedGeneration: 14
+  replicas: 0
+  updatedReplicas: 0
+  availableReplicas: 0
+  unavailableReplicas: 0
+  details:
+    message: config change
+    causes:
+      - type: ConfigChange
+  conditions:
+    - type: Available
+      status: 'False'
+      lastUpdateTime: '2020-05-12T05:40:24Z'
+      lastTransitionTime: '2020-05-12T05:40:24Z'
+      message: Deployment config does not have minimum availability.
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2020-05-12T07:47:26Z'
+      lastTransitionTime: '2020-05-12T07:47:26Z'
+      reason: NewReplicationControllerAvailable
+      message: replication controller "postgresql-6" successfully rolled out
