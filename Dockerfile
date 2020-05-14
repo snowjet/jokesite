@@ -1,6 +1,5 @@
 FROM registry.access.redhat.com/ubi8/python-36 
 LABEL description="Jokesite"
-MAINTAINER chris
 
 USER root
 RUN mkdir -p /opt/app-root/src && chown -R 1001:0 /opt/app-root/src

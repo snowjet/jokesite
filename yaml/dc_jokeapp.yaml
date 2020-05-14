@@ -1,0 +1,69 @@
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  name: jokesite
+  labels:
+    app: jokesite
+spec:
+  strategy:
+    type: Rolling
+  triggers:
+    - type: ConfigChange
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - jokesite
+        from:
+          kind: ImageStreamTag
+          namespace: jokesite
+          name: 'jokesite:latest'
+  replicas: 0
+  revisionHistoryLimit: 10
+  test: false
+  selector:
+    deploymentconfig: jokesite
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        deploymentconfig: jokesite
+    spec:
+      containers:
+        - name: jokesite
+          image: >-
+            quay.io/bicycleboy/jokesite:latest
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: DATABASE_SERVICE_NAME
+              value: postgresql
+            - name: DATABASE_ENGINE
+              value: postgresql
+            - name: DATABASE_NAME
+              value: default
+            - name: DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: jokesite
+                  key: database-user
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: jokesite
+                  key: database-password
+            - name: DJANGO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jokesite
+                  key: django-secret-key              
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
