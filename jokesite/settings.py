@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 #if not set static files will not be merged
 SECRET_KEY = 'b29qZGZvcWV3ZGFvbmZqZHNmCg=='
 #if os.getenv('USER') == "chris":
-    DEBUG = True
+DEBUG = True
 #else:
 #    SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 #    DEBUG = False
