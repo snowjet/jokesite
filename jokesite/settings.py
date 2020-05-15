@@ -24,8 +24,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #if not set static files will not be merged
+SECRET_KEY = '=uk70ey7ln6_)fklmz^%91t7$ynie4d^p7u7g(l*97@r$ie6hy'
 if os.getenv('USER') == "chris":
-    SECRET_KEY = '=uk70ey7ln6_)fklmz^%91t7$ynie4d^p7u7g(l*97@r$ie6hy'
     DEBUG = True
 else:
     SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')

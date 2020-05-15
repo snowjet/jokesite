@@ -1,5 +1,5 @@
 django>=3
-django-debug-toolbar==1.8
+django-debug-toolbar>=2
 gunicorn>=20
-psycopg2==2.8.5
-whitenoise==5.0.1
+psycopg2>=2.8.5
+whitenoise>=5.0

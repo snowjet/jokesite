@@ -24,6 +24,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Deploy Jokesite to OpenSHift')
     parser.add_argument('ProjectName', metavar='projectname', type=str, help='The name of the OpenShift Project')
     parser.add_argument('APIEndpoint', metavar='apiendpoint', type=str, help='The name of the OpenShift API Endpoint')
+    parser.add_argument('-s', '--source', action="store_true", help='Build from local source (default is Quay')
     args = parser.parse_args()
     project_name = args.ProjectName
     api_endpoint = args.APIEndpoint
@@ -63,10 +64,15 @@ cmd = "oc new-project " + project_name
 print(cmd)
 if os.system(cmd): sys.exit(1)
 
-cmd = 'oc apply -f yaml'
-print(cmd)
-if os.system(cmd): sys.exit(1)
-
-cmd = 'oc expose svc/' + project_name
-print(cmd)
-if os.system(cmd): sys.exit(1)
+if args.source:
+    #cmd = "oc new-app https://github.com/bicycleboy/jokesite"
+    cmd = "oc new app ./jokesite"
+    print(cmd)
+    if os.system(cmd): sys.exit(1)
+else:
+    cmd = 'oc apply -f yaml'
+    print(cmd)
+    if os.system(cmd): sys.exit(1)
+    cmd = 'oc expose svc/' + project_name
+    print(cmd)
+    if os.system(cmd): sys.exit(1)
