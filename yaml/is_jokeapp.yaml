@@ -1,24 +1,6 @@
 kind: ImageStream
-apiVersion: v1
+apiVersion: image.openshift.io/v1
 metadata:
-  labels:
-    app: jokesite
-    app.kubernetes.io/component: jokesite
-    app.kubernetes.io/instance: jokesite
   name: jokesite
 spec:
-  lookupPolicy:
-    local: false
-    tags:
-    - annotations:
-        openshift.io/imported-from: quay.io/bicycleboy/jokesite:latest
-      from:
-        kind: DockerImage
-        name: quay.io/bicycleboy/jokesite:latest
-      generation: null
-      importPolicy: {}
-      name: latest
-      referencePolicy:
-        type: ""
-status:
-  dockerImageRepository: ""
+  dockerImageRepository: quay.io/bicycleboy/jokesite

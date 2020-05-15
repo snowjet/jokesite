@@ -63,18 +63,6 @@ cmd = "oc new-project " + project_name
 print(cmd)
 if os.system(cmd): sys.exit(1)
 
-cmd = 'sed s/NAMESPACE/' + project_name + '/ ./templateyaml/dc_postgresql.yaml > ./yaml/dc_postgresql.yaml '
-print(cmd)
-if os.system(cmd): sys.exit(1)
-
-cmd = 'sed s/NAMESPACE/' + project_name + '/ ./templateyaml/dc_jokeapp.yaml > ./yaml/dc_jokeapp.yaml '
-print(cmd)
-if os.system(cmd): sys.exit(1)
-
-cmd = 'sed s/NAMESPACE/' + project_name + '/ ./templateyaml/svc_jokeapp.yaml > ./yaml/svc_jokeapp.yaml '
-print(cmd)
-if os.system(cmd): sys.exit(1)
-
 cmd = 'oc apply -f yaml'
 print(cmd)
 if os.system(cmd): sys.exit(1)

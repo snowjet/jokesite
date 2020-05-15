@@ -4,10 +4,8 @@ metadata:
   annotations:
     description: Defines how to deploy the database
     template.alpha.openshift.io/wait-for-ready: 'true'
-  selfLink: /apis/apps.openshift.io/v1/namespaces/django-ex/deploymentconfigs/postgresql
   resourceVersion: '50969113'
   name: postgresql
-  namespace: jokesite
 spec:
   strategy:
     type: Recreate
@@ -25,10 +23,8 @@ spec:
           kind: ImageStreamTag
           namespace: openshift
           name: 'postgresql:10'
-        lastTriggeredImage: >-
-          image-registry.openshift-image-registry.svc:5000/openshift/postgresql@sha256:de3ab628b403dc5eed986a7f392c34687bddafee7bdfccfd65cecf137ade3dfd
     - type: ConfigChange
-  replicas: 0
+  replicas: 1
   revisionHistoryLimit: 10
   test: false
   selector:
@@ -89,8 +85,6 @@ spec:
             - name: data
               mountPath: /var/lib/pgsql/data
           terminationMessagePolicy: File
-          image: >-
-            image-registry.openshift-image-registry.svc:5000/openshift/postgresql@sha256:de3ab628b403dc5eed986a7f392c34687bddafee7bdfccfd65cecf137ade3dfd
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
