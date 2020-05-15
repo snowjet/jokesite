@@ -13,4 +13,10 @@ ADD . ./
 ENV PORT 8080
 EXPOSE 8080
 
+# Add any static environment variables needed by Django or your settings file here:
+ENV DJANGO_SETTINGS_MODULE=my_project.settings.deploy
+
+# Call collectstatic (customize the following line with the minimal environment variables needed for manage.py to run):
+RUN DATABASE_URL='' python manage.py collectstatic --noinput
+
 CMD [ "/opt/app-root/src/start-application.sh"]
