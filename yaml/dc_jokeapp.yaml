@@ -18,7 +18,7 @@ spec:
           kind: ImageStreamTag
           namespace: jokesite
           name: 'jokesite:latest'
-  replicas: 0
+  replicas: 1
   revisionHistoryLimit: 10
   test: false
   selector:
