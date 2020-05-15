@@ -12,8 +12,8 @@ class JokeForm(ModelForm):
           'punchline_text' : ''    
         }
     
-        widgets = {  'joke_text' : Textarea(attrs={'cols': 80, 'rows': 1, 'placeholder': 'Your joke',  'class' : 'formFields'}),
-                   'punchline_text' : Textarea(attrs={'cols': 80, 'rows': 1, 'placeholder': 'and the punchline', 'class' : 'formFields'})}
+        widgets = {  'joke_text' : Textarea(attrs={'cols': 50, 'rows': 1, 'placeholder': 'Your joke',  'class' : 'formFields'}),
+                   'punchline_text' : Textarea(attrs={'cols': 50, 'rows': 1, 'placeholder': 'and the punchline', 'class' : 'formFields'})}
 
 
 class EmailForm(forms.Form):
